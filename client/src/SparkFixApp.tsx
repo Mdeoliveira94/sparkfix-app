@@ -75,27 +75,41 @@ const STANDARDS = {
   au: {
     label: "Australia (AS/NZS 3000)",
     codeRef: "AS/NZS 3000 / AS/NZS 3008 / AS/NZS 3017",
-    cableTable: [
-      { csa: "1.5", enclosed: "18", clipped: "23", note: "Lighting / small power" },
-      { csa: "2.5", enclosed: "24", clipped: "32", note: "General power circuits (GPO radials)" },
-      { csa: "4", enclosed: "32", clipped: "42", note: "Radial power, small cooktops" },
-      { csa: "6", enclosed: "41", clipped: "54", note: "Ovens, hot water, sub-mains" },
-      { csa: "10", enclosed: "57", clipped: "75", note: "Sub-mains, larger appliances" },
-      { csa: "16", enclosed: "76", clipped: "100", note: "Sub-mains, small supplies" },
-      { csa: "25", enclosed: "101", clipped: "133", note: "Sub-mains, larger supplies" },
-    ],
-    cableCols: ["Enclosed in wall/conduit (A)", "Clipped direct (A)"],
-    zsTable: [
-      { device: "Type B 6A", zs04: "7.28", zs5: "10.9" },
-      { device: "Type B 10A", zs04: "4.37", zs5: "6.55" },
-      { device: "Type B 16A", zs04: "2.73", zs5: "4.09" },
-      { device: "Type B 20A", zs04: "2.19", zs5: "3.28" },
-      { device: "Type B 32A", zs04: "1.37", zs5: "2.05" },
-      { device: "Type C 6A", zs04: "3.64", zs5: "5.46" },
-      { device: "Type C 10A", zs04: "2.19", zs5: "3.28" },
-      { device: "Type C 16A", zs04: "1.37", zs5: "2.05" },
-      { device: "Type C 20A", zs04: "1.09", zs5: "1.64" },
-      { device: "Type C 32A", zs04: "0.68", zs5: "1.02" },
+      cableTable: [
+      { csa: "1.5", enclosed: "16", clipped: "18", buriedDirect: "28", buriedConduit: "21", note: "Lighting / small power" },
+      { csa: "2.5", enclosed: "23", clipped: "26", buriedDirect: "40", buriedConduit: "30", note: "General power circuits (GPO radials)" },
+      { csa: "4", enclosed: "30", clipped: "34", buriedDirect: "52", buriedConduit: "39", note: "Radial power, small cooktops" },
+      { csa: "6", enclosed: "39", clipped: "44", buriedDirect: "65", buriedConduit: "50", note: "Ovens, hot water, sub-mains" },
+      { csa: "10", enclosed: "52", clipped: "60", buriedDirect: "87", buriedConduit: "66", note: "Sub-mains, larger appliances" },
+      { csa: "16", enclosed: "68", clipped: "80", buriedDirect: "114", buriedConduit: "86", note: "Sub-mains, small supplies" },
+      { csa: "25", enclosed: "90", clipped: "107", buriedDirect: "147", buriedConduit: "112", note: "Sub-mains, larger supplies" },
+     ],
+     cableCols: ["Enclosed in wall/conduit (A)", "Clipped direct (A)", "Buried direct in ground (A)", "Buried in PVC conduit, underground (A)"],
+     cableColKeys: ["enclosed", "clipped", "buriedDirect", "buriedConduit"],
+      zsTable: [
+      { device: "Type B 6A", zs04: "9.6", zs5: "9.6" },
+      { device: "Type B 10A", zs04: "5.8", zs5: "5.8" },
+      { device: "Type B 16A", zs04: "3.6", zs5: "3.6" },
+      { device: "Type B 20A", zs04: "2.9", zs5: "2.9" },
+      { device: "Type B 32A", zs04: "1.8", zs5: "1.8" },
+      { device: "Type C 6A", zs04: "5.1", zs5: "5.1" },
+      { device: "Type C 10A", zs04: "3.1", zs5: "3.1" },
+      { device: "Type C 16A", zs04: "1.9", zs5: "1.9" },
+      { device: "Type C 20A", zs04: "1.5", zs5: "1.5" },
+      { device: "Type C 32A", zs04: "1.0", zs5: "1.0" },
+      ],
+       rpheTable: [
+      { rating: "6", active: "1.0", earthCsa: "1.0", bRphe: "6.1", bRe: "3.1", cRphe: "3.3", cRe: "1.6", dRphe: "2.0", dRe: "1.0", f04Rphe: "7.4", f04Re: "3.7", f5Rphe: "9.8", f5Re: "4.9" },
+      { rating: "10", active: "1.0", earthCsa: "1.0", bRphe: "3.7", bRe: "1.8", cRphe: "2.0", cRe: "1.0", dRphe: "1.2", dRe: "0.6", f04Rphe: "4.1", f04Re: "2.0", f5Rphe: "5.9", f5Re: "2.9" },
+      { rating: "10", active: "1.5", earthCsa: "1.5", bRphe: "3.7", bRe: "1.8", cRphe: "2.0", cRe: "1.0", dRphe: "1.2", dRe: "0.6", f04Rphe: "4.1", f04Re: "2.0", f5Rphe: "5.9", f5Re: "2.9" },
+      { rating: "16", active: "1.5", earthCsa: "1.5", bRphe: "2.3", bRe: "1.2", cRphe: "1.2", cRe: "0.6", dRphe: "0.7", dRe: "0.4", f04Rphe: "2.0", f04Re: "1.0", f5Rphe: "3.2", f5Re: "1.6" },
+      { rating: "16", active: "2.5", earthCsa: "2.5", bRphe: "2.3", bRe: "1.2", cRphe: "1.2", cRe: "0.6", dRphe: "0.7", dRe: "0.4", f04Rphe: "2.0", f04Re: "1.0", f5Rphe: "3.2", f5Re: "1.6" },
+      { rating: "20", active: "2.5", earthCsa: "2.5", bRphe: "1.8", bRe: "0.9", cRphe: "1.0", cRe: "0.5", dRphe: "0.6", dRe: "0.3", f04Rphe: "1.3", f04Re: "0.7", f5Rphe: "2.3", f5Re: "1.1" },
+      { rating: "25", active: "4.0", earthCsa: "2.5", bRphe: "1.5", bRe: "0.9", cRphe: "0.8", cRe: "0.5", dRphe: "0.5", dRe: "0.3", f04Rphe: "1.0", f04Re: "0.6", f5Rphe: "1.7", f5Re: "1.1" },
+      { rating: "32", active: "4.0", earthCsa: "2.5", bRphe: "1.2", bRe: "0.7", cRphe: "0.6", cRe: "0.4", dRphe: "0.4", dRe: "0.2", f04Rphe: "0.8", f04Re: "0.5", f5Rphe: "1.4", f5Re: "0.9" },
+      { rating: "40", active: "6.0", earthCsa: "2.5", bRphe: "0.9", bRe: "0.6", cRphe: "0.5", cRe: "0.3", dRphe: "0.3", dRe: "0.2", f04Rphe: "0.6", f04Re: "0.4", f5Rphe: "1.0", f5Re: "0.7" },
+      { rating: "50", active: "10.0", earthCsa: "4.0", bRphe: "0.7", bRe: "0.5", cRphe: "0.4", cRe: "0.3", dRphe: "0.2", dRe: "0.2", f04Rphe: "0.5", f04Re: "0.3", f5Rphe: "0.8", f5Re: "0.6" },
+      { rating: "63", active: "16.0", earthCsa: "6.0", bRphe: "0.6", bRe: "0.4", cRphe: "0.3", cRe: "0.2", dRphe: "0.2", dRe: "0.1", f04Rphe: "0.4", f04Re: "0.3", f5Rphe: "0.6", f5Re: "0.4" },
     ],
     testing: [
       {
@@ -621,12 +635,12 @@ export default function SparkFixApp() {
           <div className="rounded-lg border overflow-hidden" style={panelStyle}>
             <div className="px-4 py-3 border-b font-bold text-sm" style={{ borderColor: t.border }}>Cable Size &amp; Current Carrying Capacity</div>
             <div className="overflow-x-auto">
-              <table className="w-full text-sm">
-                <thead>
+               <thead>
                   <tr style={{ color: t.subtext }}>
                     <th className="text-left px-4 py-2 font-medium">CSA (mm²)</th>
-                    <th className="text-left px-4 py-2 font-medium">{std.cableCols[0]}</th>
-                    <th className="text-left px-4 py-2 font-medium">{std.cableCols[1]}</th>
+                    {std.cableCols.map((col) => (
+                      <th key={col} className="text-left px-4 py-2 font-medium">{col}</th>
+                    ))}
                     <th className="text-left px-4 py-2 font-medium">Typical use</th>
                   </tr>
                 </thead>
@@ -634,10 +648,13 @@ export default function SparkFixApp() {
                   {std.cableTable.map((row, i) => (
                     <tr key={row.csa} style={{ backgroundColor: i % 2 ? t.rowAlt : "transparent" }}>
                       <td className="px-4 py-2 font-mono">{row.csa}</td>
-                      <td className="px-4 py-2 font-mono">{row.enclosed}</td>
-                      <td className="px-4 py-2 font-mono">{row.clipped}</td>
+                      {std.cableColKeys.map((key) => (
+                        <td key={key} className="px-4 py-2 font-mono">{(row as any)[key]}</td>
+                      ))}
                       <td className="px-4 py-2" style={{ color: t.subtext }}>{row.note}</td>
                     </tr>
+                  ))}
+                </tbody>
                   ))}
                 </tbody>
               </table>
@@ -668,7 +685,57 @@ export default function SparkFixApp() {
               </table>
             </div>
           </div>
-
+{/* Rphe table (Table 8.2) */}
+          {(std as any).rpheTable && (std as any).rpheTable.length > 0 && (
+            <div className="rounded-lg border overflow-hidden" style={panelStyle}>
+              <div className="px-4 py-3 border-b font-bold text-sm" style={{ borderColor: t.border }}>
+                Max Final Subcircuit Resistance (Rphe) — Ω — AS/NZS 3000 Table 8.2
+              </div>
+              <div className="px-4 pt-2 text-xs" style={{ color: t.subtext }}>
+                Resistance-method alternative to a Zs loop test: measure active+earth loop resistance (Rphe) or earth-conductor-only (Re) at 80% rated current, and compare against these max values.
+              </div>
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm">
+                  <thead>
+                    <tr style={{ color: t.subtext }}>
+                      <th className="text-left px-4 py-2 font-medium">Rating (A)</th>
+                      <th className="text-left px-4 py-2 font-medium">Active (mm²)</th>
+                      <th className="text-left px-4 py-2 font-medium">Earth (mm²)</th>
+                      <th className="text-left px-4 py-2 font-medium">Type B Rphe</th>
+                      <th className="text-left px-4 py-2 font-medium">Type B Re</th>
+                      <th className="text-left px-4 py-2 font-medium">Type C Rphe</th>
+                      <th className="text-left px-4 py-2 font-medium">Type C Re</th>
+                      <th className="text-left px-4 py-2 font-medium">Type D Rphe</th>
+                      <th className="text-left px-4 py-2 font-medium">Type D Re</th>
+                      <th className="text-left px-4 py-2 font-medium">Fuse 0.4s Rphe</th>
+                      <th className="text-left px-4 py-2 font-medium">Fuse 0.4s Re</th>
+                      <th className="text-left px-4 py-2 font-medium">Fuse 5s Rphe</th>
+                      <th className="text-left px-4 py-2 font-medium">Fuse 5s Re</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {(std as any).rpheTable.map((row: any, i: number) => (
+                      <tr key={`${row.rating}-${row.active}`} style={{ backgroundColor: i % 2 ? t.rowAlt : "transparent" }}>
+                        <td className="px-4 py-2 font-mono">{row.rating}</td>
+                        <td className="px-4 py-2 font-mono">{row.active}</td>
+                        <td className="px-4 py-2 font-mono">{row.earthCsa}</td>
+                        <td className="px-4 py-2 font-mono">{row.bRphe}</td>
+                        <td className="px-4 py-2 font-mono">{row.bRe}</td>
+                        <td className="px-4 py-2 font-mono">{row.cRphe}</td>
+                        <td className="px-4 py-2 font-mono">{row.cRe}</td>
+                        <td className="px-4 py-2 font-mono">{row.dRphe}</td>
+                        <td className="px-4 py-2 font-mono">{row.dRe}</td>
+                        <td className="px-4 py-2 font-mono">{row.f04Rphe}</td>
+                        <td className="px-4 py-2 font-mono">{row.f04Re}</td>
+                        <td className="px-4 py-2 font-mono">{row.f5Rphe}</td>
+                        <td className="px-4 py-2 font-mono">{row.f5Re}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          )}
           {/* Testing procedures */}
           <div className="rounded-lg border overflow-hidden" style={panelStyle}>
             <div className="px-4 py-3 border-b font-bold text-sm" style={{ borderColor: t.border }}>Testing Procedures</div>
